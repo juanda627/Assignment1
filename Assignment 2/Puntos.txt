@@ -6,3 +6,108 @@ Yair Arboleda
 Juan David Echeverri
 Yesika Marcela Montes Rodas
 
+
+Puntos del taller:
+
+A company records information on its fleet of vehicles and the employees who are permitted to drive them. The
+database is used by three groups of people: the department managers, the finance division, and the service
+department.
+For the department managers, each vehicle has a unique registration number and each driver a unique
+employee number and full name, other data required for vehicles are: plate, status (Active, Inactive, Repairing,
+Sold), mileage, model (2010, 2011). Drivers may be authorized to drive a number of vehicles, and any vehicle
+may be used by a number of drivers. Class of vehicles are: Moped, Motorcycle, Trike motorcycle, Car, Light
+rigid heavy vehicle, Medium rigid heavy vehicle, heavy rigid vehicle, tractor, Wheelchair vehicle. Some classes
+of vehicle require specialist driver qualifications, each qualification has a status (Active, Inactive, Expired,
+Disqualified) and an assignment date. There are occasional accidents which may lead to the vehicle being
+written off and/or the driver being disqualified from driving some or all classes of vehicle.
+For the finance division, each vehicle, identified again by registration number, has a current and a replacement
+value, must be taxed on a certain date, and was bought on a certain date. Finally, details such us: policy
+number, loss date, date of issue, nature of payment and damages are recorded of any insurance claims
+associated with accidents, or repair costs if no insurance claim arose along with details: date, description,
+amount and status (Pending, Paid)
+
+The service department is responsible for giving regular services to each vehicle. There are different types of
+service such as:
+● Automatic Transmission Fluid
+● Battery and Cables
+● Belts
+● Brakes
+● Cabin Air Filter
+● Chassis Lubrication
+● Dashboard Indicator Light On
+● Coolant (Antifreeze)
+● Engine Air Filter
+● Engine Oil
+● Exhaust
+● Hoses
+● Lights
+● Power Steering Fluid
+● Steering and Suspension
+● Tire Inflation and Condition
+● Wheel Alignment
+● Windshield Washer Fluid
+● Wiper Blades
+
+Each service must have a name, issue date, description, status (pending, scheduled, ok) and should be
+associated to the types of services listed above. Each type of service has a status (OK, pending, needs_repair,
+observations).
+
+Tables proposed:
+● vehicles
+● drivers
+● drivers_qualifications
+● Types_of_vehicles
+● insurance_claims
+● repair_costs
+● types_of_service *
+● Services
+● Service_details
+
+Usar el tablespace, roles, privilegios creados en el "Assignment1" (Hacer las correcciones necesarias)
+Dentro del repositorio pasado, crear una carpeta llamada "Assignment2"
+
+1. Normalize and attach entity relationship diagram (imagen, git) (1.0
+
+2. Create tables with its columns according to your normalization. Create sequences for every primary
+key, create constraints for columns which are "status". Create primary and foreign keys. Insert at least
+20 vehicles (At least one of each class), 50 drivers, 10 insurance claims, 5 services (Go to
+http://www.generatedata.com/). This should be a functional single script (.sql) (Better if you generate
+sql through sql developer) (0.5)
+
+3. Create a backup trough postman and take a screenshot of the list of backups in the console. Add the
+image to git. (0.5)
+
+4. Create a view which should be run only by users associated to "finance_profile ". The view should look
+like this:
+
+Registration_number / Mileage / Model / Current_value / class / Replacement_Value / Status /
+Required_special_qualification? / Number_of_services / Total_money_spent_in_repairs.
+The view should show only class of cars: Car, Light rigid heavy vehicle, Medium rigid heavy vehicle,
+heavy rigid vehicle, tractor and and filter the cars which were bought since 2 years ago and order them
+by mileage (descending) (0.5)
+5. Create a function to assign the name of the service, this function should return a string. The string
+must have the number of mileages run, and remember each revision is performed every 3 months, the
+name has the structure "mileage_service", for instance (3000_service, 6000_service, 9000_service). If
+the name already exist in the service table for that vehicle, must return an empty string, otherwise you
+need to calculate the number based on the current mileage, for instance, if the mileage of the car is
+11560 miles the name should return "9000_service". (0.5)
+
+6. Create a stored procedure which accepts the id of vehicle as argument, inside the procedure you
+should:
+a. Call the function to assign the name of the service
+b. If the string is not empty, create a new service for that vehicle in status "Pending", current
+date, the description field should contains next text "Mandatory '9000_service' service; current
+mileage '9123'". If the string is empty do nothing.
+c. Associate all the types of services to the service, for each type of service the status column
+must have the value "Pending". (0.5)
+
+7. Create a trigger which once the mileage column is updated, call the procedure just created. (0.5)
+
+8. Create a stored procedure to decrease the current value of vehicles as follows:
+a. If the class of vehicle is Moped, Motorcycle and Trike motorcycle 2% of the current value.
+b. If the class of vehicle is Car, Light rigid heavy vehicle, Medium rigid heavy vehicle 3% of the
+current value.
+c. Otherwise 5% of the current value.
+d. Only "manager_profile " is allowed to run the procedure and should print at the end "Number of
+vehicles updated successfully: xx" (0.5)
+
