@@ -1,0 +1,8 @@
+
+Assignment 2. Stored Procedures, triggers, functions
+
+Integrantes:
+Yair Arboleda
+Juan David Echeverri
+Yesika Marcela Montes Rodas
+
