@@ -1,3 +1,768 @@
+﻿ADVANCED BD ADMINISTRATOR
+
+STUDENTS:
+
+YAIR ARBOLEDA
+YESIKA MARCELA MONTES RODAS
+JUAN DAVID ECHEVERRI PEDROZA
+
+
+
+Punto 1
+
+Se adjunta diagrama y se crean las tablas
+
+--------------------------------------------------------
+--  DDL for Table VEHICLESTATE
+--------------------------------------------------------
+
+  CREATE TABLE "VEHICLES_FLEET"."VEHICLESTATE" 
+   (	"ID" NUMBER(*,0), 
+	"DESCRIPTIONS" VARCHAR2(100 BYTE)
+   ) PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "VEHICLES_FLEET" ;
+--------------------------------------------------------
+--  DDL for Index VEHICLESTATE_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "VEHICLES_FLEET"."VEHICLESTATE_PK" ON "VEHICLES_FLEET"."VEHICLESTATE" ("ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "VEHICLES_FLEET" ;
+--------------------------------------------------------
+--  Constraints for Table VEHICLESTATE
+--------------------------------------------------------
+
+  ALTER TABLE "VEHICLES_FLEET"."VEHICLESTATE" ADD CONSTRAINT "VEHICLESTATE_PK" PRIMARY KEY ("ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "VEHICLES_FLEET"  ENABLE;
+  ALTER TABLE "VEHICLES_FLEET"."VEHICLESTATE" MODIFY ("DESCRIPTIONS" NOT NULL ENABLE);
+  ALTER TABLE "VEHICLES_FLEET"."VEHICLESTATE" MODIFY ("ID" NOT NULL ENABLE);
+
+Punto 2
+
+--------------------------------------------------------
+--  DDL for Table QUALIFICATION
+--------------------------------------------------------
+
+  CREATE TABLE "VEHICLES_FLEET"."QUALIFICATION" 
+   (	"ID" NUMBER(*,0), 
+	"DESCRIPTIONS" VARCHAR2(100 BYTE)
+   ) PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "VEHICLES_FLEET" ;
+--------------------------------------------------------
+--  DDL for Index QUALIFICATION_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "VEHICLES_FLEET"."QUALIFICATION_PK" ON "VEHICLES_FLEET"."QUALIFICATION" ("ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "VEHICLES_FLEET" ;
+--------------------------------------------------------
+--  Constraints for Table QUALIFICATION
+--------------------------------------------------------
+
+  ALTER TABLE "VEHICLES_FLEET"."QUALIFICATION" ADD CONSTRAINT "QUALIFICATION_PK" PRIMARY KEY ("ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "VEHICLES_FLEET"  ENABLE;
+  ALTER TABLE "VEHICLES_FLEET"."QUALIFICATION" MODIFY ("DESCRIPTIONS" NOT NULL ENABLE);
+  ALTER TABLE "VEHICLES_FLEET"."QUALIFICATION" MODIFY ("ID" NOT NULL ENABLE);
+
+Punto 3
+
+--------------------------------------------------------
+--  DDL for Table VEHICLE_TYPE
+--------------------------------------------------------
+
+  CREATE TABLE "VEHICLES_FLEET"."VEHICLE_TYPE" 
+   (	"ID" NUMBER(*,0), 
+	"DESCRIPTIONS" VARCHAR2(100 BYTE), 
+	"QUALIFICATION_ID" NUMBER
+   ) PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "VEHICLES_FLEET" ;
+--------------------------------------------------------
+--  DDL for Index VEHICLETYPE_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "VEHICLES_FLEET"."VEHICLETYPE_PK" ON "VEHICLES_FLEET"."VEHICLE_TYPE" ("ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "VEHICLES_FLEET" ;
+--------------------------------------------------------
+--  Constraints for Table VEHICLE_TYPE
+--------------------------------------------------------
+
+  ALTER TABLE "VEHICLES_FLEET"."VEHICLE_TYPE" MODIFY ("QUALIFICATION_ID" NOT NULL ENABLE);
+  ALTER TABLE "VEHICLES_FLEET"."VEHICLE_TYPE" ADD CONSTRAINT "VEHICLETYPE_PK" PRIMARY KEY ("ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "VEHICLES_FLEET"  ENABLE;
+  ALTER TABLE "VEHICLES_FLEET"."VEHICLE_TYPE" MODIFY ("DESCRIPTIONS" NOT NULL ENABLE);
+  ALTER TABLE "VEHICLES_FLEET"."VEHICLE_TYPE" MODIFY ("ID" NOT NULL ENABLE);
+
+Punto 4
+
+--------------------------------------------------------
+--  DDL for Table VEHICLE
+--------------------------------------------------------
+
+  CREATE TABLE "VEHICLES_FLEET"."VEHICLE" 
+   (	"ID" NUMBER(*,0), 
+	"PLATE" VARCHAR2(10 BYTE), 
+	"TYPE_ID" NUMBER, 
+	"STATE_ID" NUMBER, 
+	"MILLAGE" NUMBER(*,0), 
+	"MODEL" NUMBER, 
+	"CURRENT_VALUE" NUMBER(*,0), 
+	"REEMPLACE_VALUE" NUMBER(*,0), 
+	"GRADE_DATE" DATE, 
+	"PURCHSE_DATE" DATE
+   ) PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "VEHICLES_FLEET" ;
+--------------------------------------------------------
+--  DDL for Index VEHICLE_PK
+--------------------------------------------------------
+
+Punto 5
+
+--------------------------------------------------------
+--  DDL for Table VEHICLE_DRIVER
+--------------------------------------------------------
+
+  CREATE TABLE "VEHICLES_FLEET"."VEHICLE_DRIVER" 
+   (	"ID" NUMBER, 
+	"VEHICLE_ID" NUMBER, 
+	"DIVER_ID" NUMBER
+   ) PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "VEHICLES_FLEET" ;
+--------------------------------------------------------
+--  DDL for Index VEHICLE_DRIVER_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "VEHICLES_FLEET"."VEHICLE_DRIVER_PK" ON "VEHICLES_FLEET"."VEHICLE_DRIVER" ("ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "VEHICLES_FLEET" ;
+--------------------------------------------------------
+--  Constraints for Table VEHICLE_DRIVER
+--------------------------------------------------------
+
+  ALTER TABLE "VEHICLES_FLEET"."VEHICLE_DRIVER" ADD CONSTRAINT "VEHICLE_DRIVER_PK" PRIMARY KEY ("ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "VEHICLES_FLEET"  ENABLE;
+  ALTER TABLE "VEHICLES_FLEET"."VEHICLE_DRIVER" MODIFY ("DIVER_ID" NOT NULL ENABLE);
+  ALTER TABLE "VEHICLES_FLEET"."VEHICLE_DRIVER" MODIFY ("VEHICLE_ID" NOT NULL ENABLE);
+  ALTER TABLE "VEHICLES_FLEET"."VEHICLE_DRIVER" MODIFY ("ID" NOT NULL ENABLE);
+
+
+
+----punto 6
+--------------------------------------------------------
+--  DDL for Table QUALIFICATION_STATUS
+--------------------------------------------------------
+
+  CREATE TABLE "VEHICLES_FLEET"."QUALIFICATION_STATUS" 
+   (	"ID" NUMBER, 
+	"DESCRIPTION" VARCHAR2(20 BYTE)
+   ) PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "VEHICLES_FLEET" ;
+--------------------------------------------------------
+--  DDL for Index QUALIFICATIONSTATUS_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "VEHICLES_FLEET"."QUALIFICATIONSTATUS_PK" ON "VEHICLES_FLEET"."QUALIFICATION_STATUS" ("ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "VEHICLES_FLEET" ;
+--------------------------------------------------------
+--  Constraints for Table QUALIFICATION_STATUS
+--------------------------------------------------------
+
+  ALTER TABLE "VEHICLES_FLEET"."QUALIFICATION_STATUS" ADD CONSTRAINT "QUALIFICATIONSTATUS_PK" PRIMARY KEY ("ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "VEHICLES_FLEET"  ENABLE;
+  ALTER TABLE "VEHICLES_FLEET"."QUALIFICATION_STATUS" MODIFY ("DESCRIPTION" NOT NULL ENABLE);
+  ALTER TABLE "VEHICLES_FLEET"."QUALIFICATION_STATUS" MODIFY ("ID" NOT NULL ENABLE);
+
+
+----punto 7
+--------------------------------------------------------
+--  DDL for Table DRIVER_QUALIFICATION
+--------------------------------------------------------
+
+  CREATE TABLE "VEHICLES_FLEET"."DRIVER_QUALIFICATION" 
+   (	"ID" NUMBER, 
+	"DRIVER_ID" NUMBER, 
+	"STATE_ID" NUMBER, 
+	"ASSIGNAMENTE_ID" NUMBER, 
+	"QUALIFICATION_ID" NUMBER
+   ) PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "VEHICLES_FLEET" ;
+--------------------------------------------------------
+--  DDL for Index DRIVER_QUALIFICATION_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "VEHICLES_FLEET"."DRIVER_QUALIFICATION_PK" ON "VEHICLES_FLEET"."DRIVER_QUALIFICATION" ("ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "VEHICLES_FLEET" ;
+--------------------------------------------------------
+--  Constraints for Table DRIVER_QUALIFICATION
+--------------------------------------------------------
+
+  ALTER TABLE "VEHICLES_FLEET"."DRIVER_QUALIFICATION" ADD CONSTRAINT "DRIVER_QUALIFICATION_PK" PRIMARY KEY ("ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "VEHICLES_FLEET"  ENABLE;
+  ALTER TABLE "VEHICLES_FLEET"."DRIVER_QUALIFICATION" MODIFY ("ASSIGNAMENTE_ID" NOT NULL ENABLE);
+  ALTER TABLE "VEHICLES_FLEET"."DRIVER_QUALIFICATION" MODIFY ("QUALIFICATION_ID" NOT NULL ENABLE);
+  ALTER TABLE "VEHICLES_FLEET"."DRIVER_QUALIFICATION" MODIFY ("ID" NOT NULL ENABLE);
+  ALTER TABLE "VEHICLES_FLEET"."DRIVER_QUALIFICATION" MODIFY ("STATE_ID" NOT NULL ENABLE);
+  ALTER TABLE "VEHICLES_FLEET"."DRIVER_QUALIFICATION" MODIFY ("DRIVER_ID" NOT NULL ENABLE);
+  
+  
+  ----punto 8
+  --------------------------------------------------------
+--  DDL for Table PAY_TYPE
+--------------------------------------------------------
+
+  CREATE TABLE "VEHICLES_FLEET"."PAY_TYPE" 
+   (	"ID" NUMBER, 
+	"DESCRIPTION" VARCHAR2(20 BYTE)
+   ) PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "VEHICLES_FLEET" ;
+--------------------------------------------------------
+--  DDL for Index PAY_TYPE_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "VEHICLES_FLEET"."PAY_TYPE_PK" ON "VEHICLES_FLEET"."PAY_TYPE" ("ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "VEHICLES_FLEET" ;
+--------------------------------------------------------
+--  Constraints for Table PAY_TYPE
+--------------------------------------------------------
+
+  ALTER TABLE "VEHICLES_FLEET"."PAY_TYPE" ADD CONSTRAINT "PAY_TYPE_PK" PRIMARY KEY ("ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "VEHICLES_FLEET"  ENABLE;
+  ALTER TABLE "VEHICLES_FLEET"."PAY_TYPE" MODIFY ("DESCRIPTION" NOT NULL ENABLE);
+  ALTER TABLE "VEHICLES_FLEET"."PAY_TYPE" MODIFY ("ID" NOT NULL ENABLE);
+
+
+-----punto 9
+--------------------------------------------------------
+--  DDL for Table INSURANCE_CLAIMS
+--------------------------------------------------------
+
+  CREATE TABLE "VEHICLES_FLEET"."INSURANCE_CLAIMS" 
+   (	"ID" NUMBER, 
+	"VEHICLE_ID" NUMBER, 
+	"VEHICLE" NUMBER(*,0), 
+	"EMISSION_DATE" DATE, 
+	"LOSE_DATE" DATE, 
+	"PAYTYPE_ID" NUMBER, 
+	"HURT" VARCHAR2(100 BYTE)
+   ) PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "VEHICLES_FLEET" ;
+--------------------------------------------------------
+--  DDL for Index INSURANCECLAIMS_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "VEHICLES_FLEET"."INSURANCECLAIMS_PK" ON "VEHICLES_FLEET"."INSURANCE_CLAIMS" ("ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "VEHICLES_FLEET" ;
+--------------------------------------------------------
+--  Constraints for Table INSURANCE_CLAIMS
+--------------------------------------------------------
+
+  ALTER TABLE "VEHICLES_FLEET"."INSURANCE_CLAIMS" ADD CONSTRAINT "INSURANCECLAIMS_PK" PRIMARY KEY ("ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "VEHICLES_FLEET"  ENABLE;
+  ALTER TABLE "VEHICLES_FLEET"."INSURANCE_CLAIMS" MODIFY ("HURT" NOT NULL ENABLE);
+  ALTER TABLE "VEHICLES_FLEET"."INSURANCE_CLAIMS" MODIFY ("PAYTYPE_ID" NOT NULL ENABLE);
+  ALTER TABLE "VEHICLES_FLEET"."INSURANCE_CLAIMS" MODIFY ("LOSE_DATE" NOT NULL ENABLE);
+  ALTER TABLE "VEHICLES_FLEET"."INSURANCE_CLAIMS" MODIFY ("EMISSION_DATE" NOT NULL ENABLE);
+  ALTER TABLE "VEHICLES_FLEET"."INSURANCE_CLAIMS" MODIFY ("VEHICLE" NOT NULL ENABLE);
+  ALTER TABLE "VEHICLES_FLEET"."INSURANCE_CLAIMS" MODIFY ("VEHICLE_ID" NOT NULL ENABLE);
+  ALTER TABLE "VEHICLES_FLEET"."INSURANCE_CLAIMS" MODIFY ("ID" NOT NULL ENABLE);
+  
+  ----punto 10
+  --------------------------------------------------------
+--  DDL for Table REPART_TYPE
+--------------------------------------------------------
+
+  CREATE TABLE "VEHICLES_FLEET"."REPART_TYPE" 
+   (	"ID" NUMBER, 
+	"DESCRIPTION" VARCHAR2(100 BYTE)
+   ) PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "VEHICLES_FLEET" ;
+--------------------------------------------------------
+--  DDL for Index REPART_TYPE_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "VEHICLES_FLEET"."REPART_TYPE_PK" ON "VEHICLES_FLEET"."REPART_TYPE" ("ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "VEHICLES_FLEET" ;
+--------------------------------------------------------
+--  Constraints for Table REPART_TYPE
+--------------------------------------------------------
+
+  ALTER TABLE "VEHICLES_FLEET"."REPART_TYPE" ADD CONSTRAINT "REPART_TYPE_PK" PRIMARY KEY ("ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "VEHICLES_FLEET"  ENABLE;
+  ALTER TABLE "VEHICLES_FLEET"."REPART_TYPE" MODIFY ("DESCRIPTION" NOT NULL ENABLE);
+  ALTER TABLE "VEHICLES_FLEET"."REPART_TYPE" MODIFY ("ID" NOT NULL ENABLE);
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+ Create a view which should be run only by users associated to "finance_profile​". The view should look                 like this: 
+Registration_number / Mileage / Model / Current_value / class / Replacement_Value / Status /              Required_special_qualification? / Number_of_services / Total_money_spent_in_repairs. The view should show only class of cars: Car, Light rigid heavy vehicle, Medium rigid heavy vehicle,heavy rigid vehicle, tractor and and filter the cars which were bought since 2 years ago and order them by mileage (descending) 
+
+
+CREATE VIEW VW_VEHICLE_1
+AS
+SELECT V.ID
+    , V.MILLAGE
+    , V.MODEL
+    , V.CURRENT_VALUE
+    , VT.DESCRIPTIONS
+    , V.REEMPLACE_VALUE
+    , VS.DESCRIPTIONS AS STATUS
+    , NVL(Q.DESCRIPTIONS,'NO REQUIERE') AS QUALIFICATIONS
+    , (SELECT COUNT(1) FROM SERVICE WHERE SERVICE.VEHICLE_ID = V.ID) AS SERVICES_COUNT
+    , (SELECT NVL(SUM(COST_VALUE),0) FROM REPART_COST WHERE REPART_COST.VEHICLE_ID = V.ID) AS Total_money_spent_in_repairs
+FROM VEHICLE V
+    INNER JOIN VEHICLE_TYPE VT ON V.TYPE_ID = VT.ID
+    INNER JOIN VEHICLESTATE VS ON V.STATE_ID = VS.ID
+    LEFT JOIN QUALIFICATION Q ON Q.ID = VT.QUALIFICATION_ID
+WHERE VT.DESCRIPTIONS IN ('Coche', 'Vehículo pesado ligero rígido', 'Vehículo pesado rígido medio', 'vehículo pesado rígido', 'tractor')
+    AND V.PURCHSE_DATE < (SELECT SYSDATE-720 FROM DUAL)
+ORDER BY V.MILLAGE DESC;
+  
+-----------------------------------------------------------------------------------------------------------------------------
+Create a function to assign the name of the service, this function should return a string. The stringmust have the number of mileages run, and remember each revision is performed every 3 months, the name has the structure "mileage_service", for instance (3000_service, 6000_service, 9000_service). If the name already exist in the service table for that vehicle, must return an empty string, otherwise you need to calculate the number based on the current mileage, for instance, if the mileage of the car is 11560 miles the name should return "9000_service"
+
+
+  create or replace FUNCTION fncAssignServiceByVehicle(vehicleId IN INT, serviceName IN VARCHAR2) 
+   RETURN VARCHAR2
+   IS 
+    result1 VARCHAR2(100);
+    millage NUMBER;
+    millage_service VARCHAR2(100);
+    cont NUMBER;
+   BEGIN 
+        SELECT MILLAGE into millage FROM VEHICLE WHERE Id = 44 AND rownum = 1;
+        millage_service := millage||'_'||serviceName;
+        
+        SELECT COUNT(1) INTO cont FROM SERVICE WHERE VEHICLE_ID=vehicleId AND NAME=millage_service;
+        IF cont > 0 THEN
+            result1 :=''; 
+        ELSE
+            
+            result1 := millage_service;
+        END IF;
+        
+        RETURN(result1); 
+    END;
+
+SELECT * FROM SERVICE;
+SELECT  fncAssignServiceByVehicle(1,'SERVICE 1') FROM DUAL; 
+
+--------------------------------------------------------------------------------------------------------------------------------
+Create a stored procedure which accepts the id of vehicle as argument, inside the procedure you should: a. Call the function to assign the name of the service b. If the string is not empty, create a new service for that vehicle in status "Pending", current                 date, the description field should contains next text "Mandatory '9000_service' service; current mileage '9123'". If the string is empty do nothing. c. Associate all the types of services to the service, for each type of service the status column must have the value "Pending".
+  
+  
+  CREATE OR REPLACE PROCEDURE spAssignServiceByVehicle(vehicleId IN INT) AS
+ resultado VARCHAR2(100);
+BEGIN
+    SELECT fncAssignServiceByVehicle(1,'SERVICE') into resultado FROM DUAL; 
+    IF resultado <> '' THEN
+        INSERT INTO SERVICE VALUES (1,vehicleId,2,resultado,(SELECT SYSDATE FROM DUAL),1);
+    ELSE
+        --INSERT INTO SERVICE VALUES (1,vehicleId,2,resultado,(SELECT SYSDATE FROM DUAL),1);
+        resultado := '1';
+    END IF;
+END;
+
+--EXEC spAssignServiceByVehicle(1);
+------------------------------------------------------------------------------------------------------------------------------
+
+Create a trigger which once the mileage column is updated, call the procedure just created.
+
+create or replace TRIGGER TRIGGER_MILLAGE 
+BEFORE UPDATE OF MILLAGE ON VEHICLE 
+BEGIN
+  spAssignServiceByVehicle(1);
+END;
+
+
+-----------------------------------------------------------------------------------------------------------------------------
+Create a stored procedure to decrease the current value of vehicles as follows: a. If the class of vehicle is Moped, Motorcycle and Trike motorcycle 2% of the current value. b. If the class of vehicle is Car, Light rigid heavy vehicle, Medium rigid heavy vehicle 3% of the current value. c. Otherwise 5% of the current value. d. Only "manager_profile​" is allowed to run the procedure and should print at the end "Number ofvehicles updated successfully
+
+create or replace PROCEDURE sp1(vehicleId IN INT, resultado1 OUT VARCHAR2 ) AS
+resultado VARCHAR2(100);
+BEGIN
+   UPDATE VEHICLE
+   SET CURRENT_VALUE = CURRENT_VALUE - (CURRENT_VALUE*0.2)
+   WHERE ID=vehicleId
+    AND TYPE_ID IN (1,2,3);
+
+    UPDATE VEHICLE
+   SET CURRENT_VALUE = CURRENT_VALUE - (CURRENT_VALUE*0.3)
+   WHERE ID=vehicleId
+    AND TYPE_ID IN (4, 5, 6);
+
+    UPDATE VEHICLE
+   SET CURRENT_VALUE = CURRENT_VALUE - (CURRENT_VALUE*0.5)
+   WHERE ID=vehicleId
+    AND TYPE_ID NOT IN (1, 2, 3, 4, 5, 6);  
+    
+    resultado :=  SQL%ROWCOUNT;
+    resultado1 := resultado; 
+END;
+
+
+
+
+----punto 6
+--------------------------------------------------------
+--  DDL for Table QUALIFICATION_STATUS
+--------------------------------------------------------
+
+  CREATE TABLE "VEHICLES_FLEET"."QUALIFICATION_STATUS" 
+   (	"ID" NUMBER, 
+	"DESCRIPTION" VARCHAR2(20 BYTE)
+   ) PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "VEHICLES_FLEET" ;
+--------------------------------------------------------
+--  DDL for Index QUALIFICATIONSTATUS_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "VEHICLES_FLEET"."QUALIFICATIONSTATUS_PK" ON "VEHICLES_FLEET"."QUALIFICATION_STATUS" ("ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "VEHICLES_FLEET" ;
+--------------------------------------------------------
+--  Constraints for Table QUALIFICATION_STATUS
+--------------------------------------------------------
+
+  ALTER TABLE "VEHICLES_FLEET"."QUALIFICATION_STATUS" ADD CONSTRAINT "QUALIFICATIONSTATUS_PK" PRIMARY KEY ("ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "VEHICLES_FLEET"  ENABLE;
+  ALTER TABLE "VEHICLES_FLEET"."QUALIFICATION_STATUS" MODIFY ("DESCRIPTION" NOT NULL ENABLE);
+  ALTER TABLE "VEHICLES_FLEET"."QUALIFICATION_STATUS" MODIFY ("ID" NOT NULL ENABLE);
+
+
+----punto 7
+--------------------------------------------------------
+--  DDL for Table DRIVER_QUALIFICATION
+--------------------------------------------------------
+
+  CREATE TABLE "VEHICLES_FLEET"."DRIVER_QUALIFICATION" 
+   (	"ID" NUMBER, 
+	"DRIVER_ID" NUMBER, 
+	"STATE_ID" NUMBER, 
+	"ASSIGNAMENTE_ID" NUMBER, 
+	"QUALIFICATION_ID" NUMBER
+   ) PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "VEHICLES_FLEET" ;
+--------------------------------------------------------
+--  DDL for Index DRIVER_QUALIFICATION_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "VEHICLES_FLEET"."DRIVER_QUALIFICATION_PK" ON "VEHICLES_FLEET"."DRIVER_QUALIFICATION" ("ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "VEHICLES_FLEET" ;
+--------------------------------------------------------
+--  Constraints for Table DRIVER_QUALIFICATION
+--------------------------------------------------------
+
+  ALTER TABLE "VEHICLES_FLEET"."DRIVER_QUALIFICATION" ADD CONSTRAINT "DRIVER_QUALIFICATION_PK" PRIMARY KEY ("ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "VEHICLES_FLEET"  ENABLE;
+  ALTER TABLE "VEHICLES_FLEET"."DRIVER_QUALIFICATION" MODIFY ("ASSIGNAMENTE_ID" NOT NULL ENABLE);
+  ALTER TABLE "VEHICLES_FLEET"."DRIVER_QUALIFICATION" MODIFY ("QUALIFICATION_ID" NOT NULL ENABLE);
+  ALTER TABLE "VEHICLES_FLEET"."DRIVER_QUALIFICATION" MODIFY ("ID" NOT NULL ENABLE);
+  ALTER TABLE "VEHICLES_FLEET"."DRIVER_QUALIFICATION" MODIFY ("STATE_ID" NOT NULL ENABLE);
+  ALTER TABLE "VEHICLES_FLEET"."DRIVER_QUALIFICATION" MODIFY ("DRIVER_ID" NOT NULL ENABLE);
+  
+  
+  ----punto 8
+  --------------------------------------------------------
+--  DDL for Table PAY_TYPE
+--------------------------------------------------------
+
+  CREATE TABLE "VEHICLES_FLEET"."PAY_TYPE" 
+   (	"ID" NUMBER, 
+	"DESCRIPTION" VARCHAR2(20 BYTE)
+   ) PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "VEHICLES_FLEET" ;
+--------------------------------------------------------
+--  DDL for Index PAY_TYPE_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "VEHICLES_FLEET"."PAY_TYPE_PK" ON "VEHICLES_FLEET"."PAY_TYPE" ("ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "VEHICLES_FLEET" ;
+--------------------------------------------------------
+--  Constraints for Table PAY_TYPE
+--------------------------------------------------------
+
+  ALTER TABLE "VEHICLES_FLEET"."PAY_TYPE" ADD CONSTRAINT "PAY_TYPE_PK" PRIMARY KEY ("ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "VEHICLES_FLEET"  ENABLE;
+  ALTER TABLE "VEHICLES_FLEET"."PAY_TYPE" MODIFY ("DESCRIPTION" NOT NULL ENABLE);
+  ALTER TABLE "VEHICLES_FLEET"."PAY_TYPE" MODIFY ("ID" NOT NULL ENABLE);
+
+
+-----punto 9
+--------------------------------------------------------
+--  DDL for Table INSURANCE_CLAIMS
+--------------------------------------------------------
+
+  CREATE TABLE "VEHICLES_FLEET"."INSURANCE_CLAIMS" 
+   (	"ID" NUMBER, 
+	"VEHICLE_ID" NUMBER, 
+	"VEHICLE" NUMBER(*,0), 
+	"EMISSION_DATE" DATE, 
+	"LOSE_DATE" DATE, 
+	"PAYTYPE_ID" NUMBER, 
+	"HURT" VARCHAR2(100 BYTE)
+   ) PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "VEHICLES_FLEET" ;
+--------------------------------------------------------
+--  DDL for Index INSURANCECLAIMS_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "VEHICLES_FLEET"."INSURANCECLAIMS_PK" ON "VEHICLES_FLEET"."INSURANCE_CLAIMS" ("ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "VEHICLES_FLEET" ;
+--------------------------------------------------------
+--  Constraints for Table INSURANCE_CLAIMS
+--------------------------------------------------------
+
+  ALTER TABLE "VEHICLES_FLEET"."INSURANCE_CLAIMS" ADD CONSTRAINT "INSURANCECLAIMS_PK" PRIMARY KEY ("ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "VEHICLES_FLEET"  ENABLE;
+  ALTER TABLE "VEHICLES_FLEET"."INSURANCE_CLAIMS" MODIFY ("HURT" NOT NULL ENABLE);
+  ALTER TABLE "VEHICLES_FLEET"."INSURANCE_CLAIMS" MODIFY ("PAYTYPE_ID" NOT NULL ENABLE);
+  ALTER TABLE "VEHICLES_FLEET"."INSURANCE_CLAIMS" MODIFY ("LOSE_DATE" NOT NULL ENABLE);
+  ALTER TABLE "VEHICLES_FLEET"."INSURANCE_CLAIMS" MODIFY ("EMISSION_DATE" NOT NULL ENABLE);
+  ALTER TABLE "VEHICLES_FLEET"."INSURANCE_CLAIMS" MODIFY ("VEHICLE" NOT NULL ENABLE);
+  ALTER TABLE "VEHICLES_FLEET"."INSURANCE_CLAIMS" MODIFY ("VEHICLE_ID" NOT NULL ENABLE);
+  ALTER TABLE "VEHICLES_FLEET"."INSURANCE_CLAIMS" MODIFY ("ID" NOT NULL ENABLE);
+  
+  ----punto 10
+  --------------------------------------------------------
+--  DDL for Table REPART_TYPE
+--------------------------------------------------------
+
+  CREATE TABLE "VEHICLES_FLEET"."REPART_TYPE" 
+   (	"ID" NUMBER, 
+	"DESCRIPTION" VARCHAR2(100 BYTE)
+   ) PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "VEHICLES_FLEET" ;
+--------------------------------------------------------
+--  DDL for Index REPART_TYPE_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "VEHICLES_FLEET"."REPART_TYPE_PK" ON "VEHICLES_FLEET"."REPART_TYPE" ("ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "VEHICLES_FLEET" ;
+--------------------------------------------------------
+--  Constraints for Table REPART_TYPE
+--------------------------------------------------------
+
+  ALTER TABLE "VEHICLES_FLEET"."REPART_TYPE" ADD CONSTRAINT "REPART_TYPE_PK" PRIMARY KEY ("ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "VEHICLES_FLEET"  ENABLE;
+  ALTER TABLE "VEHICLES_FLEET"."REPART_TYPE" MODIFY ("DESCRIPTION" NOT NULL ENABLE);
+  ALTER TABLE "VEHICLES_FLEET"."REPART_TYPE" MODIFY ("ID" NOT NULL ENABLE);
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+ Create a view which should be run only by users associated to "finance_profile​". The view should look                 like this: 
+Registration_number / Mileage / Model / Current_value / class / Replacement_Value / Status /              Required_special_qualification? / Number_of_services / Total_money_spent_in_repairs. The view should show only class of cars: Car, Light rigid heavy vehicle, Medium rigid heavy vehicle,heavy rigid vehicle, tractor and and filter the cars which were bought since 2 years ago and order them by mileage (descending) 
+
+
+CREATE VIEW VW_VEHICLE_1
+AS
+SELECT V.ID
+    , V.MILLAGE
+    , V.MODEL
+    , V.CURRENT_VALUE
+    , VT.DESCRIPTIONS
+    , V.REEMPLACE_VALUE
+    , VS.DESCRIPTIONS AS STATUS
+    , NVL(Q.DESCRIPTIONS,'NO REQUIERE') AS QUALIFICATIONS
+    , (SELECT COUNT(1) FROM SERVICE WHERE SERVICE.VEHICLE_ID = V.ID) AS SERVICES_COUNT
+    , (SELECT NVL(SUM(COST_VALUE),0) FROM REPART_COST WHERE REPART_COST.VEHICLE_ID = V.ID) AS Total_money_spent_in_repairs
+FROM VEHICLE V
+    INNER JOIN VEHICLE_TYPE VT ON V.TYPE_ID = VT.ID
+    INNER JOIN VEHICLESTATE VS ON V.STATE_ID = VS.ID
+    LEFT JOIN QUALIFICATION Q ON Q.ID = VT.QUALIFICATION_ID
+WHERE VT.DESCRIPTIONS IN ('Coche', 'Vehículo pesado ligero rígido', 'Vehículo pesado rígido medio', 'vehículo pesado rígido', 'tractor')
+    AND V.PURCHSE_DATE < (SELECT SYSDATE-720 FROM DUAL)
+ORDER BY V.MILLAGE DESC;
+  
+-----------------------------------------------------------------------------------------------------------------------------
+Create a function to assign the name of the service, this function should return a string. The stringmust have the number of mileages run, and remember each revision is performed every 3 months, the name has the structure "mileage_service", for instance (3000_service, 6000_service, 9000_service). If the name already exist in the service table for that vehicle, must return an empty string, otherwise you need to calculate the number based on the current mileage, for instance, if the mileage of the car is 11560 miles the name should return "9000_service"
+
+
+  create or replace FUNCTION fncAssignServiceByVehicle(vehicleId IN INT, serviceName IN VARCHAR2) 
+   RETURN VARCHAR2
+   IS 
+    result1 VARCHAR2(100);
+    millage NUMBER;
+    millage_service VARCHAR2(100);
+    cont NUMBER;
+   BEGIN 
+        SELECT MILLAGE into millage FROM VEHICLE WHERE Id = 44 AND rownum = 1;
+        millage_service := millage||'_'||serviceName;
+        
+        SELECT COUNT(1) INTO cont FROM SERVICE WHERE VEHICLE_ID=vehicleId AND NAME=millage_service;
+        IF cont > 0 THEN
+            result1 :=''; 
+        ELSE
+            
+            result1 := millage_service;
+        END IF;
+        
+        RETURN(result1); 
+    END;
+
+SELECT * FROM SERVICE;
+SELECT  fncAssignServiceByVehicle(1,'SERVICE 1') FROM DUAL; 
+
+--------------------------------------------------------------------------------------------------------------------------------
+Create a stored procedure which accepts the id of vehicle as argument, inside the procedure you should: a. Call the function to assign the name of the service b. If the string is not empty, create a new service for that vehicle in status "Pending", current                 date, the description field should contains next text "Mandatory '9000_service' service; current mileage '9123'". If the string is empty do nothing. c. Associate all the types of services to the service, for each type of service the status column must have the value "Pending".
+  
+  
+  CREATE OR REPLACE PROCEDURE spAssignServiceByVehicle(vehicleId IN INT) AS
+ resultado VARCHAR2(100);
+BEGIN
+    SELECT fncAssignServiceByVehicle(1,'SERVICE') into resultado FROM DUAL; 
+    IF resultado <> '' THEN
+        INSERT INTO SERVICE VALUES (1,vehicleId,2,resultado,(SELECT SYSDATE FROM DUAL),1);
+    ELSE
+        --INSERT INTO SERVICE VALUES (1,vehicleId,2,resultado,(SELECT SYSDATE FROM DUAL),1);
+        resultado := '1';
+    END IF;
+END;
+
+--EXEC spAssignServiceByVehicle(1);
+------------------------------------------------------------------------------------------------------------------------------
+
+Create a trigger which once the mileage column is updated, call the procedure just created.
+
+create or replace TRIGGER TRIGGER_MILLAGE 
+BEFORE UPDATE OF MILLAGE ON VEHICLE 
+BEGIN
+  spAssignServiceByVehicle(1);
+END;
+
+
+-----------------------------------------------------------------------------------------------------------------------------
+Create a stored procedure to decrease the current value of vehicles as follows: a. If the class of vehicle is Moped, Motorcycle and Trike motorcycle 2% of the current value. b. If the class of vehicle is Car, Light rigid heavy vehicle, Medium rigid heavy vehicle 3% of the current value. c. Otherwise 5% of the current value. d. Only "manager_profile​" is allowed to run the procedure and should print at the end "Number ofvehicles updated successfully
+
+create or replace PROCEDURE sp1(vehicleId IN INT, resultado1 OUT VARCHAR2 ) AS
+resultado VARCHAR2(100);
+BEGIN
+   UPDATE VEHICLE
+   SET CURRENT_VALUE = CURRENT_VALUE - (CURRENT_VALUE*0.2)
+   WHERE ID=vehicleId
+    AND TYPE_ID IN (1,2,3);
+
+    UPDATE VEHICLE
+   SET CURRENT_VALUE = CURRENT_VALUE - (CURRENT_VALUE*0.3)
+   WHERE ID=vehicleId
+    AND TYPE_ID IN (4, 5, 6);
+
+    UPDATE VEHICLE
+   SET CURRENT_VALUE = CURRENT_VALUE - (CURRENT_VALUE*0.5)
+   WHERE ID=vehicleId
+    AND TYPE_ID NOT IN (1, 2, 3, 4, 5, 6);  
+    
+    resultado :=  SQL%ROWCOUNT;
+    resultado1 := resultado; 
+END;
 
 
 
